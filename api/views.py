@@ -1,6 +1,14 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
-from django.shortcuts import render
+from api.models import Movie    
+from api.serializers import MovieSerializer
 
-# Create your views here.
+class MovieCreateView(ListCreateAPIView):
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
+
+
+class MovieDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
